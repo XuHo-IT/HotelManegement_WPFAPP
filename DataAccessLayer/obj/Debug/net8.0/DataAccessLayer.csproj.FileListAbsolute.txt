@@ -1,0 +1,14 @@
+E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
+E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
+E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.runtimeconfig.json
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache

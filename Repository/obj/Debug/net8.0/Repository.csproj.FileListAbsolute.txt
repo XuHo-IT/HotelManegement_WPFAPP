@@ -1,0 +1,17 @@
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\Repository.deps.json
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\Repository.runtimeconfig.json
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\Repository.dll
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\Repository.pdb
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\BussinessObject.dll
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\BussinessObject.pdb
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.csproj.AssemblyReference.cache
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.AssemblyInfoInputs.cache
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.AssemblyInfo.cs
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.csproj.CoreCompileInputs.cache
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.csproj.Up2Date
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.dll
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\refint\Repository.dll
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.pdb
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\ref\Repository.dll

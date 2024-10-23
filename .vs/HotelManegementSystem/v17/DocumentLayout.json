@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\PRN212\\HotelManegementSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E56DCE2B-A36A-4EAE-BEA6-2D7A48582753}|BussinessObject\\BussinessObject.csproj|e:\\prn212\\hotelmanegementsystem\\bussinessobject\\roominformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E56DCE2B-A36A-4EAE-BEA6-2D7A48582753}|BussinessObject\\BussinessObject.csproj|solutionrelative:bussinessobject\\roominformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E56DCE2B-A36A-4EAE-BEA6-2D7A48582753}|BussinessObject\\BussinessObject.csproj|e:\\prn212\\hotelmanegementsystem\\bussinessobject\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E56DCE2B-A36A-4EAE-BEA6-2D7A48582753}|BussinessObject\\BussinessObject.csproj|solutionrelative:bussinessobject\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DBBED06-E56A-4106-A207-907AE1A796A7}|Repository\\Repository.csproj|e:\\prn212\\hotelmanegementsystem\\repository\\bookingdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DBBED06-E56A-4106-A207-907AE1A796A7}|Repository\\Repository.csproj|solutionrelative:repository\\bookingdetailrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80E2D443-C4A8-4295-833A-BCBBA8AE4497}|DataAccessLayer\\DataAccessLayer.csproj|e:\\prn212\\hotelmanegementsystem\\dataaccesslayer\\bookingdetaildao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80E2D443-C4A8-4295-833A-BCBBA8AE4497}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\bookingdetaildao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoomInformation.cs",
+              "DocumentMoniker": "E:\\PRN212\\HotelManegementSystem\\BussinessObject\\RoomInformation.cs",
+              "RelativeDocumentMoniker": "BussinessObject\\RoomInformation.cs",
+              "ToolTip": "E:\\PRN212\\HotelManegementSystem\\BussinessObject\\RoomInformation.cs",
+              "RelativeToolTip": "BussinessObject\\RoomInformation.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T01:54:23.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "E:\\PRN212\\HotelManegementSystem\\BussinessObject\\Customer.cs",
+              "RelativeDocumentMoniker": "BussinessObject\\Customer.cs",
+              "ToolTip": "E:\\PRN212\\HotelManegementSystem\\BussinessObject\\Customer.cs",
+              "RelativeToolTip": "BussinessObject\\Customer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T01:37:36.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookingDetailDAO.cs",
+              "DocumentMoniker": "E:\\PRN212\\HotelManegementSystem\\DataAccessLayer\\BookingDetailDAO.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\BookingDetailDAO.cs",
+              "ToolTip": "E:\\PRN212\\HotelManegementSystem\\DataAccessLayer\\BookingDetailDAO.cs",
+              "RelativeToolTip": "DataAccessLayer\\BookingDetailDAO.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T01:33:05.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BookingDetailRepository.cs",
+              "DocumentMoniker": "E:\\PRN212\\HotelManegementSystem\\Repository\\BookingDetailRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\BookingDetailRepository.cs",
+              "ToolTip": "E:\\PRN212\\HotelManegementSystem\\Repository\\BookingDetailRepository.cs",
+              "RelativeToolTip": "Repository\\BookingDetailRepository.cs",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T01:33:03.964Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

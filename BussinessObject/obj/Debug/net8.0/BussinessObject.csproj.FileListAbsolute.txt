@@ -1,0 +1,14 @@
+E:\PRN212\HotelManegementSystem\BussinessObject\bin\Debug\net8.0\BussinessObject.deps.json
+E:\PRN212\HotelManegementSystem\BussinessObject\bin\Debug\net8.0\BussinessObject.runtimeconfig.json
+E:\PRN212\HotelManegementSystem\BussinessObject\bin\Debug\net8.0\BussinessObject.dll
+E:\PRN212\HotelManegementSystem\BussinessObject\bin\Debug\net8.0\BussinessObject.pdb
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.csproj.AssemblyReference.cache
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.GeneratedMSBuildEditorConfig.editorconfig
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.AssemblyInfoInputs.cache
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.AssemblyInfo.cs
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.csproj.CoreCompileInputs.cache
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.dll
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\refint\BussinessObject.dll
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.pdb
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.genruntimeconfig.cache
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\ref\BussinessObject.dll

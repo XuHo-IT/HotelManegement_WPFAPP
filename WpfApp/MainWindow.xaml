@@ -1,0 +1,58 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <!-- User Information Section -->
+            <TextBlock x:Name="UserInfo" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <!-- Available Rooms Section -->
+            <TextBlock Text="Available Rooms" FontSize="16" FontWeight="Bold" Margin="0,20,0,5"/>
+            <DataGrid x:Name="dataGridRooms" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Room ID" Binding="{Binding RoomID}" Width="50"/>
+                    <DataGridTextColumn Header="Room Number" Binding="{Binding RoomNumber}" Width="100"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding RoomDetailDescription}" Width="200"/>
+                    <DataGridTextColumn Header="Max Capacity" Binding="{Binding RoomMaxCapacity}" Width="100"/>
+                    <DataGridTextColumn Header="Room Type ID" Binding="{Binding RoomTypeID}" Width="100"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding RoomStatus}" Width="50"/>
+                    <DataGridTextColumn Header="Price per Day" Binding="{Binding RoomPricePerDay}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Billing Section -->
+            <TextBlock Text="Your Bills" FontSize="16" FontWeight="Bold" Margin="0,20,0,5"/>
+            <DataGrid x:Name="dataGridUserBills" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" SelectionChanged="dataGridUserBills_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Reservation ID" Binding="{Binding BookingReservationID}" Width="100"/>
+                    <DataGridTextColumn Header="Booking Date" Binding="{Binding BookingDate}" Width="150"/>
+                    <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}" Width="100"/>
+                    <DataGridTextColumn Header="Booking Status" Binding="{Binding BookingStatus}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Billing Details Section -->
+            <TextBlock Text="Billing Details" FontSize="16" FontWeight="Bold" Margin="0,20,0,5"/>
+            <DataGrid x:Name="dataGridBillDetails" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Reservation ID" Binding="{Binding BookingReservationID}" Width="100"/>
+                    <DataGridTextColumn Header="Room ID" Binding="{Binding RoomID}" Width="100"/>
+                    <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}" Width="100"/>
+                    <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="100"/>
+                    <DataGridTextColumn Header="Actual Price" Binding="{Binding ActualPrice}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <!-- View Bill Button -->
+            <Button Content="View Bill" Width="100" Height="30" Margin="0,10,0,0" Click="ViewBill_Click"/>
+
+            <Button Content="Book Room" Width="100" Height="30" Margin="0,10,0,0" Click="BookRoom_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
