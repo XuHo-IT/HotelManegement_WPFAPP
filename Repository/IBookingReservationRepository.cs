@@ -15,5 +15,10 @@ namespace Repository
         int AddBookingReservation(BookingReservation bookingReservation);
         void UpdateBookingReservation(BookingReservation bookingReservation);
         void DeleteBookingReservation(int id);
+        List<BookingReservation> GetReservationsByUserId(int userId);
+        List<BookingReservation> GetUserBills(int customerId);
+        List<BookingDetail> GetUserBillDetails(int bookingReservationID);
+
+
     }
 }

@@ -8,74 +8,112 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    internal class BookingReservationDAO
+    public class BookingReservationDAO
     {
-        private string connectionString;
+        private static BookingReservationDAO? instance = null;
+        private static readonly object instanceLock = new object();
+        private HotelManagementContext _context;
 
-        public BookingReservationDAO(string connectionString)
+        public static BookingReservationDAO Instance
         {
-            this.connectionString = connectionString;
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new BookingReservationDAO();
+                    }
+                    return instance;
+                }
+            }
         }
+
+
+        private BookingReservationDAO() { }
+
 
         public List<BookingReservation> GetAllBookingReservations()
         {
-            List<BookingReservation> reservations = new List<BookingReservation>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT * FROM BookingReservation";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        BookingReservation reservation = new BookingReservation
-                        {
-                            BookingReservationID = reader.GetInt32(reader.GetOrdinal("BookingReservationID")),
-                            BookingDate = reader.IsDBNull(reader.GetOrdinal("BookingDate")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("BookingDate")),
-                            TotalPrice = reader.IsDBNull(reader.GetOrdinal("TotalPrice")) ? (decimal?)null : reader.GetDecimal(reader.GetOrdinal("TotalPrice")),
-                            CustomerID = reader.GetInt32(reader.GetOrdinal("CustomerID")),
-                            BookingStatus = reader.IsDBNull(reader.GetOrdinal("BookingStatus")) ? (byte?)null : reader.GetByte(reader.GetOrdinal("BookingStatus"))
-                        };
-
-                        reservations.Add(reservation);
-                    }
-                }
-            }
-
-            return reservations;
+            _context = new HotelManagementContext();
+            return _context.BookingReservations.ToList(); ;
         }
-        public void AddBookingReservation(BookingReservation bookingReservation)
+
+
+        public int AddBookingReservations(BookingReservation bookingReservation)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var _context = new HotelManagementContext())
             {
-                string query = "INSERT INTO BookingReservation (BookingDate, TotalPrice, CustomerID, BookingStatus) VALUES (@BookingDate, @TotalPrice, @CustomerID, @BookingStatus)";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@BookingDate", bookingReservation.BookingDate);
-                command.Parameters.AddWithValue("@TotalPrice", bookingReservation.TotalPrice);
-                command.Parameters.AddWithValue("@CustomerID", bookingReservation.CustomerID);
-                command.Parameters.AddWithValue("@BookingStatus", bookingReservation.BookingStatus);
-                connection.Open();
-                command.ExecuteNonQuery();
+                _context.BookingReservations.Add(bookingReservation);
+                _context.SaveChanges();
+            }
+            return bookingReservation.BookingReservationID; // Return the newly generated ID
+        }
+
+        public BookingReservation GetBookingReservationById(int id)
+        {
+            using (_context = new HotelManagementContext())
+            {
+                return _context.BookingReservations.Find(id);
             }
         }
-        private int SaveBookingReservation(BookingReservation bookingReservation)
+        public void UpdateBookingReservation(BookingReservation bookingReservation)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (_context = new HotelManagementContext())
             {
-                string query = "INSERT INTO BookingReservation (BookingDate, TotalPrice, CustomerID, BookingStatus) " +
-                               "OUTPUT INSERTED.BookingReservationID VALUES (@BookingDate, @TotalPrice, @CustomerID, @BookingStatus)";
-                using (var command = new SqlCommand(query, connection))
+                _context.BookingReservations.Update(bookingReservation);
+                _context.SaveChanges();
+            }
+        }
+        public void DeleteBookingReservation(int id)
+        {
+            using (_context = new HotelManagementContext())
+            {
+                var reservation = _context.BookingReservations.Find(id);
+                if (reservation != null)
                 {
-                    command.Parameters.AddWithValue("@BookingDate", bookingReservation.BookingDate);
-                    command.Parameters.AddWithValue("@TotalPrice", bookingReservation.TotalPrice);
-                    command.Parameters.AddWithValue("@CustomerID", bookingReservation.CustomerID);
-                    command.Parameters.AddWithValue("@BookingStatus", bookingReservation.BookingStatus);
-                    connection.Open();
-                    return (int)command.ExecuteScalar();
+                    _context.BookingReservations.Remove(reservation);
+                    _context.SaveChanges();
                 }
+            }
+        }
+        public List<BookingReservation> GetReservationsByUserId(int userId)
+        {
+            using (_context = new HotelManagementContext())
+            {
+                return _context.BookingReservations
+                    .Where(r => r.CustomerID == userId)
+                    .ToList();
+            }
+        }
+
+        public List<BookingReservation> GetUserBills(int customerId)
+        {
+            using (_context = new HotelManagementContext())
+            {
+                return _context.BookingReservations
+                    .Where(r => r.CustomerID == customerId && r.BookingStatus == 1)
+                    .ToList();
+            }
+        }
+      
+        public List<BookingReservation> GetBookingsByPeriod(DateTime startDate, DateTime endDate)
+        {
+            using (_context = new HotelManagementContext())
+            {
+                return _context.BookingReservations
+                    .Where(r => r.BookingDate >= startDate && r.BookingDate <= endDate)
+                    .OrderByDescending(r => r.BookingDate)
+                    .ToList();
+            }
+        }
+        public List<BookingDetail> GetUserBillDetails(int bookingReservationID)
+        {
+            using (_context = new HotelManagementContext())
+            {
+                return _context.BookingDetails
+                    .Where(d => d.BookingReservationID == bookingReservationID)
+                    .ToList();
             }
         }
 

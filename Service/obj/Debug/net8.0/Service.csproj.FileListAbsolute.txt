@@ -17,3 +17,4 @@ E:\PRN212\HotelManegementSystem\Service\obj\Debug\net8.0\refint\Service.dll
 E:\PRN212\HotelManegementSystem\Service\obj\Debug\net8.0\Service.pdb
 E:\PRN212\HotelManegementSystem\Service\obj\Debug\net8.0\Service.genruntimeconfig.cache
 E:\PRN212\HotelManegementSystem\Service\obj\Debug\net8.0\ref\Service.dll
+E:\PRN212\HotelManegementSystem\Service\obj\Debug\net8.0\Service.sourcelink.json

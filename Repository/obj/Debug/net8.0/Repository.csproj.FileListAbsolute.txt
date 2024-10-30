@@ -15,3 +15,6 @@ E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\refint\Repository.dl
 E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.pdb
 E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.genruntimeconfig.cache
 E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\ref\Repository.dll
+E:\PRN212\HotelManegementSystem\Repository\obj\Debug\net8.0\Repository.sourcelink.json
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\DataAccessLayer.dll
+E:\PRN212\HotelManegementSystem\Repository\bin\Debug\net8.0\DataAccessLayer.pdb

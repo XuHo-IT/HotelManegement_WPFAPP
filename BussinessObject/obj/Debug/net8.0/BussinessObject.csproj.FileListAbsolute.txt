@@ -12,3 +12,4 @@ E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\refint\Bussines
 E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.pdb
 E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.genruntimeconfig.cache
 E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\ref\BussinessObject.dll
+E:\PRN212\HotelManegementSystem\BussinessObject\obj\Debug\net8.0\BussinessObject.sourcelink.json

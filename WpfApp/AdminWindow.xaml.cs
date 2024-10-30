@@ -1,6 +1,5 @@
 ﻿using BussinessObject;  // Ensure you have the correct namespace for your Business Objects
 using Repository;       // Ensure this namespace contains your repositories
-using Service;         // Ensure this namespace contains your services
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -10,56 +9,43 @@ namespace WpfApp
     public partial class AdminWindow : Window
     {
         private readonly string connectionString;
-        private readonly ICustomerRepository customerService; 
-        private readonly IRoomInformationRepository roomService;
-        private readonly IBookingReservationRepository bookingReservationService;
-        private readonly IBookingDetailRepository bookingDetailService;
+        private readonly ICustomerRepository customerRepository;
+        private readonly IRoomInformationRepository roomInformationRepository;
+        private readonly IBookingReservationRepository bookingReservationRepository;
+        private readonly IBookingDetailRepository bookingDetailRepository;
 
         private RoomInformation selectedRoom;
 
         public AdminWindow()
         {
             InitializeComponent();
-
-            // Connection string to the database
-            var connectionString = "Server=(local); Database=HotelManagement; Uid=sa; Pwd=sa123; TrustServerCertificate=True";
-
-            // Instantiate repositories
-            var customerRepository = new CustomerRepository(connectionString);
-            customerService = new CustomerService(customerRepository);  
-
-            var roomRepository = new RoomInformationRepository(connectionString); 
-            roomService = new RoomInformationService(roomRepository);
-
-            var bookingReservationRepository = new BookingReservationRepository(connectionString);
-            bookingReservationService = new BookingReservationService(bookingReservationRepository);
-
-            var bookingDetailRepository = new BookingDetailRepository(connectionString); 
-            bookingDetailService = new BookingDetailService(bookingDetailRepository);
-
-            LoadData(); 
+            customerRepository = new CustomerRepository();
+            roomInformationRepository = new RoomInformationRepository();
+            bookingReservationRepository = new BookingReservationRepository();
+            bookingDetailRepository = new BookingDetailRepository();
+            LoadData();
             LoadReservations();
         }
 
         private void LoadData()
         {
-            // Load all customers
-            List<Customer> customers = customerService.GetAllCustomers();
-            dataGridCustomers.ItemsSource = customers; // Bind customer data to DataGrid
+         
+            List<Customer> customers = customerRepository.GetAllCustomers();
+            dataGridCustomers.ItemsSource = customers;
 
-            // Load all room information
-            List<RoomInformation> rooms = roomService.GetAllRoomInformation(); // Retrieve room information
-            dataGridRooms.ItemsSource = rooms; // Bind room data to DataGrid
+         
+            List<RoomInformation> rooms = roomInformationRepository.GetAllRoomInformation(); 
+            dataGridRooms.ItemsSource = rooms; 
         }
 
         private void LoadReservations()
         {
-            List<BookingReservation> reservations = bookingReservationService.GetAllBookingReservations();
-            dataGridReservations.ItemsSource = reservations; // Bind reservation data to DataGrid
+            List<BookingReservation> reservations = bookingReservationRepository.GetAllBookingReservations();
+            dataGridReservations.ItemsSource = reservations; 
         }
         private void dataGridRooms_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            // Get the selected room
+           
             selectedRoom = (RoomInformation)dataGridRooms.SelectedItem;
         }
 
@@ -76,17 +62,17 @@ namespace WpfApp
                 RoomPricePerDay = 100
             };
 
-            roomService.AddRoomInformation(newRoom);
-            LoadData(); 
+            roomInformationRepository.AddRoomInformation(newRoom);
+            LoadData();
         }
 
         private void UpdateRoom_Click(object sender, RoutedEventArgs e)
         {
             if (selectedRoom != null)
             {
-              
-                roomService.UpdateRoomInformation(selectedRoom);
-                LoadData(); 
+
+                roomInformationRepository.UpdateRoomInformation(selectedRoom);
+                LoadData();
             }
             else
             {
@@ -98,8 +84,8 @@ namespace WpfApp
         {
             if (selectedRoom != null)
             {
-                roomService.DeleteRoomInformation(selectedRoom.RoomID);
-                LoadData(); 
+                roomInformationRepository.DeleteRoomInformation(selectedRoom.RoomID);
+                LoadData();
             }
             else
             {
@@ -113,13 +99,13 @@ namespace WpfApp
             var selectedReservation = (BookingReservation)dataGridReservations.SelectedItem;
             if (selectedReservation != null)
             {
-             
+
                 selectedReservation.BookingStatus = 1;
-                bookingReservationService.UpdateBookingReservation(selectedReservation);
+                bookingReservationRepository.UpdateBookingReservation(selectedReservation);
 
                 LoadReservations();
 
-          
+
                 MessageBox.Show("The reservation has been confirmed.");
             }
             else
@@ -136,7 +122,7 @@ namespace WpfApp
             {
                 // Update the BookingStatus to rejected (0)
                 selectedReservation.BookingStatus = 0;
-                bookingReservationService.UpdateBookingReservation(selectedReservation);
+                bookingReservationRepository.UpdateBookingReservation(selectedReservation);
 
                 LoadReservations(); // Refresh the data grid
             }
@@ -153,8 +139,8 @@ namespace WpfApp
 
             if (startDate.HasValue && endDate.HasValue)
             {
-                // Call the existing bookingReservationService to get bookings by period
-                var reportData = bookingReservationService.GetBookingsByPeriod(startDate.Value, endDate.Value);
+                // Call the existing bookingReservationRepository to get bookings by period
+                var reportData = bookingReservationRepository.GetBookingsByPeriod(startDate.Value, endDate.Value);
 
                 // Display the report data in the DataGrid
                 dataGridReservations.ItemsSource = reportData;

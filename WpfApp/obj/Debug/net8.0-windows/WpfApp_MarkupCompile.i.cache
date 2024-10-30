@@ -9,12 +9,12 @@ WpfApp
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-E:\PRN212\HotelManegementSystem\WpfApp\App.xaml
-3-1107111578
+
+4685871946
 
 81929675965
-241-1484211499
-AdminWindow.xaml;LoginWindow.xaml;MainWindow.xaml;
+247-899837254
+AdminWindow.xaml;App.xaml;LoginWindow.xaml;MainWindow.xaml;
 
-True
+False
 

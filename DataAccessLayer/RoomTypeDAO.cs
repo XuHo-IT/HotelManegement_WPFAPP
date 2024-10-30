@@ -8,39 +8,74 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    internal class RoomTypeDAO
+    public class RoomTypeDAO
     {
-        private string connectionString;
 
-        public RoomTypeDAO(string connectionString)
+        private static RoomTypeDAO? instance = null;
+        private static readonly object instanceLock = new object();
+        private HotelManagementContext _context;
+
+        public static RoomTypeDAO Instance
         {
-            this.connectionString = connectionString;
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new RoomTypeDAO();
+                    }
+                    return instance;
+                }
+            }
         }
+
+
+        private RoomTypeDAO() { }
+
 
         public List<RoomType> GetAllRoomTypes()
         {
-            List<RoomType> roomTypes = new List<RoomType>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var _context = new HotelManagementContext())
             {
-                string query = "SELECT * FROM RoomType";
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
+                return _context.RoomType.ToList();
+            }
+        }
+        public RoomType GetRoomTypeById(int id)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                return _context.RoomType.Find(id);
+            }
+        }
+        public void AddRoomType(RoomType roomType)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                _context.RoomType.Add(roomType);
+                _context.SaveChanges();
+            }
+        }
+        public void UpdateRoomType(RoomType roomType)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                _context.RoomType.Update(roomType);
+                _context.SaveChanges();
+            }
+        }
+        public void DeleteRoomType(int id)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                var roomType = _context.RoomType.Find(id);
+                if (roomType != null)
                 {
-                    while (reader.Read())
-                    {
-                        RoomType roomType = new RoomType
-                        {
-                            RoomTypeID = reader.GetInt32(reader.GetOrdinal("RoomTypeID")),
-                            RoomTypeName = reader.GetString(reader.GetOrdinal("RoomTypeName")),
-                            TypeDescription = reader.GetString(reader.GetOrdinal("TypeDescription")),
-                            TypeNote = reader.GetString(reader.GetOrdinal("TypeNote"))
-                        };
-                        roomTypes.Add(roomType);
-                    }
+                    _context.RoomType.Remove(roomType);
+                    _context.SaveChanges();
                 }
             }
-            return roomTypes;
         }
+
     }
 }

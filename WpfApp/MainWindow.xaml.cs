@@ -8,7 +8,7 @@ namespace WpfApp
 {
     public partial class MainWindow : Window
     {
-        private readonly IRoomInformationRepository roomService;
+        private readonly IRoomInformationRepository roomRepository;
         private readonly string connectionString;
         private int currentUserId; 
         private string currentUser; 
@@ -17,9 +17,8 @@ namespace WpfApp
         {
             InitializeComponent();
             currentUser = username;
-            currentUserId = userId; // Set the customer ID
-            connectionString = "Server=(local); Database=HotelManagement; Uid=sa; Pwd=sa123; TrustServerCertificate=True";
-            roomService = new RoomInformationRepository(connectionString);
+            currentUserId = userId; 
+            roomRepository = new RoomInformationRepository();
 
             LoadUserInfo();
             LoadAvailableRooms();
@@ -34,7 +33,7 @@ namespace WpfApp
         private void LoadAvailableRooms()
         {
             // Load room information for booking
-            var rooms = roomService.GetAllRoomInformation();
+            var rooms = roomRepository.GetAllRoomInformation();
             dataGridRooms.ItemsSource = rooms;
         }
 
@@ -58,7 +57,7 @@ namespace WpfApp
                 int bookingReservationId = 0;
                 try
                 {
-                    var bookingReservationRepository = new BookingReservationRepository(connectionString);
+                    var bookingReservationRepository = new BookingReservationRepository();
                     bookingReservationId = bookingReservationRepository.AddBookingReservation(bookingReservation);
                 }
                 catch (Exception ex)
@@ -98,7 +97,7 @@ namespace WpfApp
 
         private void LoadUserBills()
         {
-            var bookingReservationRepository = new BookingReservationRepository(connectionString);
+            var bookingReservationRepository = new BookingReservationRepository();
             var userBills = bookingReservationRepository.GetUserBills(currentUserId);
             dataGridUserBills.ItemsSource = userBills;
 
@@ -112,7 +111,7 @@ namespace WpfApp
         {
             if (dataGridUserBills.SelectedItem is BookingReservation selectedBill)
             {
-                var bookingReservationRepository = new BookingReservationRepository(connectionString);
+                var bookingReservationRepository = new BookingReservationRepository();
                 var billDetails = bookingReservationRepository.GetUserBillDetails(selectedBill.BookingReservationID);
                 dataGridBillDetails.ItemsSource = billDetails; 
             }
@@ -122,7 +121,7 @@ namespace WpfApp
         {
             try
             {
-                var bookingReservationRepository = new BookingReservationRepository(connectionString);
+                var bookingReservationRepository = new BookingReservationRepository();
                 bookingReservationRepository.AddBookingReservation(bookingReservation);
             }
             catch (Exception ex)
@@ -135,7 +134,7 @@ namespace WpfApp
         {
             try
             {
-                var bookingDetailRepository = new BookingDetailRepository(connectionString);
+                var bookingDetailRepository = new BookingDetailRepository();
                 bookingDetailRepository.AddBookingDetail(bookingDetail);
             }
             catch (Exception ex)

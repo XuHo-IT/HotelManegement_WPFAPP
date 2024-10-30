@@ -8,42 +8,80 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    internal class CustomerDAO
+    public class CustomerDAO
     {
-        private string connectionString;
 
-        public CustomerDAO(string connectionString)
+        private static CustomerDAO? instance = null;
+        private static readonly object instanceLock = new object();
+        private HotelManagementContext _context;
+
+        public static CustomerDAO Instance
         {
-            this.connectionString = connectionString;
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new CustomerDAO();
+                    }
+                    return instance;
+                }
+            }
         }
+
+
+        private CustomerDAO() { }
 
         public List<Customer> GetAllCustomers()
         {
-            List<Customer> customers = new List<Customer>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var _context = new HotelManagementContext())
             {
-                string query = "SELECT * FROM Customer";
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
+                return _context.Customers.ToList();
+            }
+        }
+        public Customer GetCustomerById(int id)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                return _context.Customers.Find(id);
+            }
+        }
+        public Customer GetCustomerByEmailAddress(string emailAddress)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                return _context.Customers
+                    .FirstOrDefault(c => c.EmailAddress == emailAddress);
+            }
+        }
+        public void AddCustomer(Customer customer)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+            }
+        }
+        public void UpdateCustomer(Customer customer)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                _context.Customers.Update(customer);
+                _context.SaveChanges();
+            }
+        }
+        public void DeleteCustomer(int id)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                var customer = _context.Customers.Find(id);
+                if (customer != null)
                 {
-                    while (reader.Read())
-                    {
-                        Customer customer = new Customer
-                        {
-                            CustomerID = reader.GetInt32(reader.GetOrdinal("CustomerID")),
-                            CustomerFullName = reader.GetString(reader.GetOrdinal("CustomerFullName")),
-                            Telephone = reader.GetString(reader.GetOrdinal("Telephone")),
-                            EmailAddress = reader.GetString(reader.GetOrdinal("EmailAddress")),
-                            CustomerBirthday = reader.IsDBNull(reader.GetOrdinal("CustomerBirthday")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("CustomerBirthday")),
-                            CustomerStatus = reader.IsDBNull(reader.GetOrdinal("CustomerStatus")) ? (byte?)null : reader.GetByte(reader.GetOrdinal("CustomerStatus")),
-                            Password = reader.GetString(reader.GetOrdinal("Password"))
-                        };
-                        customers.Add(customer);
-                    }
+                    _context.Customers.Remove(customer);
+                    _context.SaveChanges();
                 }
             }
-            return customers;
         }
     }
 }

@@ -1,22 +1,30 @@
-﻿using Repository;
-using Service; // Added Service namespace for CustomerService
+﻿using Microsoft.Extensions.Configuration;
+using Repository;
 using System;
 using System.Windows;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WpfApp
 {
-   
-    public partial class LoginWindow : System.Windows.Window
+    public partial class LoginWindow : Window
     {
-        private readonly ICustomerRepository customerService;
+        private readonly ICustomerRepository customerRepository;
+        private readonly string adminEmail;
+        private readonly string adminPassword;
 
+        // Default constructor
         public LoginWindow()
         {
             InitializeComponent();
-            var connectionString = "Server=(local); Database=HotelManagement; Uid=sa; Pwd=sa123; TrustServerCertificate=True";
-            var customerRepository = new CustomerRepository(connectionString);
-            customerService = new CustomerService(customerRepository);  
+            customerRepository = new CustomerRepository();
+            adminEmail = string.Empty; // Default value
+            adminPassword = string.Empty; // Default value
+        }
+
+        // Constructor with IConfiguration
+        public LoginWindow(IConfiguration configuration) : this()
+        {
+            adminEmail = configuration["DefaultAdmin:Email"];
+            adminPassword = configuration["DefaultAdmin:Password"];
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -25,27 +33,35 @@ namespace WpfApp
             {
                 string userInput = txtUser.Text.Trim();
 
-             
-                var customer = customerService.GetCustomerByEmailAddress(userInput);
+                // Check if user input matches the admin credentials
+                if (userInput.Equals(adminEmail, StringComparison.OrdinalIgnoreCase) &&
+                    txtPass.Password == adminPassword)
+                {
+                    // Login as admin
+                    this.Hide();
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.Show();
+                    return;
+                }
 
-        
+                // Otherwise, check the customer database
+                var customer = customerRepository.GetCustomerByEmailAddress(userInput);
+
                 if (customer != null)
                 {
-                
                     if (!string.IsNullOrEmpty(txtPass.Password) && customer.Password.Equals(txtPass.Password))
                     {
-                      
-                        if (customer.CustomerStatus == 1) 
+                        if (customer.CustomerStatus == 1)
                         {
-                            this.Hide();  // Hide the current window
-                            MainWindow mainWindow = new MainWindow(customer.CustomerFullName,customer.CustomerID);
-                            mainWindow.Show();  // Show the main window
+                            this.Hide();
+                            MainWindow mainWindow = new MainWindow(customer.CustomerFullName, customer.CustomerID);
+                            mainWindow.Show();
                         }
                         else if (customer.CustomerStatus == 0) // Assuming CustomerStatus of 0 is for admin users
                         {
-                            this.Hide();  
-                            AdminWindow adminWindow = new AdminWindow(); 
-                            adminWindow.Show();  
+                            this.Hide();
+                            AdminWindow adminWindow = new AdminWindow();
+                            adminWindow.Show();
                         }
                         else
                         {
@@ -67,7 +83,6 @@ namespace WpfApp
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
-
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

@@ -8,42 +8,75 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    internal class RoomInformationDAO
+    public class RoomInformationDAO
     {
-        private string connectionString;
 
-        public RoomInformationDAO(string connectionString)
+        private static RoomInformationDAO? instance = null;
+        private static readonly object instanceLock = new object();
+        private HotelManagementContext _context;
+
+        public static RoomInformationDAO Instance
         {
-            this.connectionString = connectionString;
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new RoomInformationDAO();
+                    }
+                    return instance;
+                }
+            }
         }
+
+
+        private RoomInformationDAO() { }
+
 
         public List<RoomInformation> GetAllRoomInformation()
         {
-            List<RoomInformation> roomInformationList = new List<RoomInformation>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (var _context = new HotelManagementContext())
             {
-                string query = "SELECT * FROM RoomInformation";
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
+                return _context.RoomInformation.ToList();
+            }
+        }
+
+        public RoomInformation GetRoomInformationById(int id)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                return _context.RoomInformation.Find(id);
+            }
+        }
+        public void AddRoomInformation(RoomInformation roomInformation)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                _context.RoomInformation.Add(roomInformation);
+                _context.SaveChanges();
+            }
+        }
+        public void UpdateRoomInformation(RoomInformation roomInformation)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                _context.RoomInformation.Update(roomInformation);
+                _context.SaveChanges();
+            }
+        }
+        public void DeleteRoomInformation(int id)
+        {
+            using (var _context = new HotelManagementContext())
+            {
+                var roomInformation = _context.RoomInformation.Find(id);
+                if (roomInformation != null)
                 {
-                    while (reader.Read())
-                    {
-                        RoomInformation roomInformation = new RoomInformation
-                        {
-                            RoomID = reader.GetInt32(reader.GetOrdinal("RoomID")),
-                            RoomNumber = reader.GetString(reader.GetOrdinal("RoomNumber")),
-                            RoomDetailDescription = reader.GetString(reader.GetOrdinal("RoomDetailDescription")),
-                            RoomMaxCapacity = reader.GetInt32(reader.GetOrdinal("RoomMaxCapacity")),
-                            RoomTypeID = reader.GetInt32(reader.GetOrdinal("RoomTypeID")),
-                            RoomStatus = reader.GetByte(reader.GetOrdinal("RoomStatus")),
-                            RoomPricePerDay = reader.GetDecimal(reader.GetOrdinal("RoomPricePerDay"))
-                        };
-                        roomInformationList.Add(roomInformation);
-                    }
+                    _context.RoomInformation.Remove(roomInformation);
+                    _context.SaveChanges();
                 }
             }
-            return roomInformationList;
         }
+
     }
 }

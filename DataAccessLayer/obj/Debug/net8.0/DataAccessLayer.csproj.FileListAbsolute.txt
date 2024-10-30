@@ -12,3 +12,7 @@ E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessL
 E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.runtimeconfig.json
 E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache
 E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json
+E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\BussinessObject.dll
+E:\PRN212\HotelManegementSystem\DataAccessLayer\bin\Debug\net8.0\BussinessObject.pdb
+E:\PRN212\HotelManegementSystem\DataAccessLayer\obj\Debug\net8.0\DataAcce.E67BD773.Up2Date

@@ -117,9 +117,7 @@ E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\runtimes\win-x86
 E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\BussinessObject.dll
 E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Repository.dll
-E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Service.dll
 E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Repository.pdb
-E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Service.pdb
 E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\BussinessObject.pdb
 E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\WpfApp.csproj.AssemblyReference.cache
 E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\LoginWindow.g.cs
@@ -142,3 +140,12 @@ E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\WpfApp.genruntim
 E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\ref\WpfApp.dll
 E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\AdminWindow.g.cs
 E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\AdminWindow.baml
+E:\PRN212\HotelManegementSystem\WpfApp\obj\Debug\net8.0-windows\WpfApp.sourcelink.json
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\DataAccessLayer.dll
+E:\PRN212\HotelManegementSystem\WpfApp\bin\Debug\net8.0-windows\DataAccessLayer.pdb

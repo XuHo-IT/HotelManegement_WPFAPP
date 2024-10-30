@@ -14,5 +14,6 @@ namespace Repository
         void AddBookingDetail(BookingDetail bookingDetail);
         void UpdateBookingDetail(BookingDetail bookingDetail);
         void DeleteBookingDetail(int id);
+
     }
 }
